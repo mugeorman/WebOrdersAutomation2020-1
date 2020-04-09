@@ -17,6 +17,11 @@ public class Driver {
 
     }
 
+    /**
+     * synchronized makes method thread safe. I t ensures that only 1 thread can use it at the time.
+     * Thread safety reduces performance but it makes everything safe
+     * @return
+     */
     public synchronized static WebDriver getDriver() {
         //if webdriver object doesn't exist
         //create it
@@ -51,7 +56,7 @@ public class Driver {
     public static void closeDriver() {
         if (driverPool != null) {
             driverPool.get().quit();
-            driverPool = null;
+            driverPool.remove();
         }
     }
 }
